@@ -2,7 +2,8 @@
   "name": "contain-element",
   "description": "A JavaScript plugin to contain an element within its parent element",
   "authors": [
-    "Kevin MacMartin"
+    "Kevin MacMartin",
+    "Luke Evers"
   ],
   "license": "MIT",
   "main": "./contain-element.min.js",
