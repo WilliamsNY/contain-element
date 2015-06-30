@@ -73,7 +73,6 @@ function containElement(options) {
 
 	// Run the scale function and bind it to various window-size-changing events
 	scaleElement();
-	window.onload = function(event) { scaleElement(); };
 	window.onresize = function(event) { scaleElement(); };
 	screen.addEventListener('orientationchange', function() { scaleElement(); });
 }
