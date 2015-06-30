@@ -28,8 +28,8 @@ Written by [Williams New York](http://williamsnewyork.com)
 
 ### Authors
 
-* Kevin MacMartin
-* Luke Evers
+* [Kevin MacMartin](https://github.com/prurigro/)
+* [Luke Evers](https://github.com/lukevers/)
 
 ## LICENSE
 
