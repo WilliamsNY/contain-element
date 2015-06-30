@@ -1,4 +1,4 @@
-function containElement(options) {
+function ContainElement(options) {
 	var scaleFactor = 1;
 	var element = document.getElementById(options.id);
 	var elementWidth = options.width || element.offsetWidth;
@@ -12,7 +12,7 @@ function containElement(options) {
 	if (element.parentElement.style.position != 'relative' && element.parentElement.style.position != 'absolute' && element.parentElement.style.position != 'fixed')
 		element.parentElement.style.position = 'relative';
 
-	function scaleElement() {
+	function updateContain() {
 		var parentWidth = element.parentElement.offsetWidth;
 		var parentHeight = element.parentElement.offsetHeight;
 
@@ -67,13 +67,14 @@ function containElement(options) {
 			}
 		} else {
 			// Try again in 30ms if the document didn't load enough to determine its width and height yet
-			window.setTimeout(scaleElement, 30);
+			window.setTimeout(updateContain, 30);
 		}
 	}
 
 	// Run the scale function and bind it to various window-size-changing events
-	scaleElement();
-	window.onresize = function(event) { scaleElement(); };
-	screen.addEventListener('orientationchange', function() { scaleElement(); });
+	updateContain();
+
+	// Add scale function to the library
+	this.update = function() { updateContain(); };
 }
 

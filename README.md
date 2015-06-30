@@ -7,18 +7,25 @@ A JavaScript plugin to contain an element within its parent element.
 * Pure JavaScript with no dependencies
 * Configures the horizontal and vertical alignment of the contained element
 * Can detect the native size or have it specified at runtime
+* Includes function to update the size and position
 
 ## Usage
 
 ```
 window.onload = function() {
-    containElement({
+    var contain = new ContainElement({
         id: 'element', // the id of the element to be contained
         width: '100', // (optional) element width in pixels (unset: element width)
         height: '100', // (optional) element height in pixels (unset: element height)
         valign: 'top', // (optional) vertical alignment: top|bottom (unset: middle)
         halign: 'left' // (optional) horizontal alignment: left|right (unset: middle)
     });
+
+    // (example) update the size and positioning on window resize
+    window.onresize = function(event) { contain.update(); };
+
+    // (example) update the size and positioning on orientation change
+    screen.addEventListener('orientationchange', function() { contain.update(); });
 };
 ```
 
