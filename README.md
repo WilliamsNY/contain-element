@@ -11,7 +11,7 @@ A JavaScript plugin to contain an element within its parent element.
 
 ## Usage
 
-```
+```javascript
 window.onload = function() {
     var contain = new ContainElement({
         id: 'element', // the id of the element to be contained
