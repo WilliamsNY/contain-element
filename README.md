@@ -26,7 +26,7 @@ window.onload = function() {
     });
 
     // (example) update the size and positioning on window resize
-    window.onresize = function(event) { contain.update(); };
+    window.onresize = function() { contain.update(); };
 
     // (example) update the size and positioning on orientation change
     screen.addEventListener('orientationchange', function() { contain.update(); });
