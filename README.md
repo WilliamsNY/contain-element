@@ -2,6 +2,10 @@
 
 A JavaScript plugin to contain an element within its parent element.
 
+## Description
+
+The plugin scales an element to the minimum size required for it to be completely contained within its parent, and retains its original aspect ratio by cropping portions that don't fit based on its vertical and horizontal alignment (by default both are set to: `middle`).
+
 ## Features
 
 * Pure JavaScript with no dependencies
