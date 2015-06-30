@@ -29,6 +29,7 @@ Written by [Williams New York](http://williamsnewyork.com)
 ### Authors
 
 * Kevin MacMartin
+* Luke Evers
 
 ## LICENSE
 

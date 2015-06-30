@@ -1,8 +1,8 @@
 function containElement(options) {
 	var scaleFactor = 1;
 	var element = document.getElementById(options.id);
-	var elementWidth = options.width ? options.width : element.offsetWidth;
-	var elementHeight = options.height ? options.height : element.offsetHeight;
+	var elementWidth = options.width || element.offsetWidth;
+	var elementHeight = options.height || element.offsetHeight;
 
 	// Apply required attributes to the element and its parents if they aren't already set
 	if (element.style.position != 'absolute')
