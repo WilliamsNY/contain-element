@@ -54,11 +54,17 @@
 				opacity: 1;
 			}
 
+			.video-credit {
+				display: block;
+				margin: 10px;
+				font-size: 10px;
+			}
+
 		</style>
 	</head>
 	<body>
 		<script>
-			var video = '<video id="video" autoplay muted loop><source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm"><source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></video>';
+			var video = '<video id="video" autoplay muted loop><source src="http://wny.s3.amazonaws.com/videos/TheenclosureoftheNextGenerationTransitSurvey.webm" type="video/webm"><source src="http://wny.s3.amazonaws.com/videos/TheenclosureoftheNextGenerationTransitSurvey.mp4" type="video/mp4"></video>';
 			var demo1 = function() {
 				var v = document.getElementById('video');
 				if (v !== null) v.parentNode.removeChild(v);
@@ -69,8 +75,8 @@
 
 				var contain = new ContainElement({
 					id: 'video',
-					height: '400',
-					width: '960',
+					height: '720',
+					width: '1280',
 				});
 
 				window.onresize = contain.update;
@@ -87,8 +93,8 @@
 
 				var contain = new ContainElement({
 					id: 'video',
-					height: '400',
-					width: '960',
+					height: '720',
+					width: '1280',
 				});
 			}
 
@@ -106,6 +112,7 @@
 				</ul>
 				<div class="button" id="demo1" onclick="demo1();">With Resize</div>
 				<div class="button" id="demo2" onclick="demo2();">Without Resize</div>
+				<a class="video-credit" href="http://www.eso.org/public/">Video Credit ESO</a>
 			</div>
 		</div>
 
