@@ -28,6 +28,13 @@
 				list-style: none;
 			}
 
+			hr {
+				max-width: 300px;
+				border: 0;
+				border-bottom: 1px solid #f6f6f6;
+				opacity: .5;
+			}
+
 			.buttons {
 				position: fixed;
 				display: table;
@@ -75,6 +82,7 @@
 				document.getElementsByClassName('active')[0].className = 'button';
 				document.getElementById(id).className = 'button active';
 
+				// ------ Relevant code below ----- //
 				var contain = new ContainElement({
 					id: 'video',
 					height: '720',
@@ -85,6 +93,7 @@
 
 				window.onresize = contain.update;
 				screen.addEventListener('orientationchange', contain.update);
+				// ----- Relevant code above ----- //
 			}
 
 			window.onload = function() {
@@ -96,12 +105,21 @@
 			<div class="demo">
 				<h1>Contain Element</h1>
 				<p>
-					A JavaScript plugin to contain an element within its parent element
+					A JavaScript plugin to contain an element within its parent element.
 				</p>
+
 				<ul>
 					<li><a href="https://github.com/WilliamsNY/contain-element">Download On GitHub</a></li>
 				</ul>
 
+				<hr>
+
+				<p>
+					<i>
+						The video in the background is the example.
+						<br/>Change the positioning below and resize your browser to compare.
+					</i>
+				</p>
 
 				<div class="button" id="demo1" onclick="demo('demo1', 'top', 'left');">top left</div>
 				<div class="button" id="demo2" onclick="demo('demo2', 'top', 'center');">top center</div>
