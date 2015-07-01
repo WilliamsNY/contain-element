@@ -75,6 +75,6 @@ function ContainElement(options) {
 	updateContain();
 
 	// Add scale function to the library
-	this.update = function() { updateContain(); };
+	this.update = updateContain;
 }
 
