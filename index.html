@@ -12,6 +12,7 @@
 				margin: 0;
 				color: #f6f6f6;
 				font-family: 'Helvetica Neue', 'Helvetica', 'sans-serif';
+				font-size: 13px;
 			}
 
 			a {
@@ -44,7 +45,9 @@
 			.button {
 				display: inline-block;
 				background: #212121;
-				padding: 10px 30px;
+				padding: 10px;
+				width: 100px;
+				margin: 5px;
 				opacity: .5;
 				cursor: pointer;
 			}
@@ -65,40 +68,28 @@
 	<body>
 		<script>
 			var video = '<video id="video" autoplay muted loop><source src="http://wny.s3.amazonaws.com/videos/TheenclosureoftheNextGenerationTransitSurvey.webm" type="video/webm"><source src="http://wny.s3.amazonaws.com/videos/TheenclosureoftheNextGenerationTransitSurvey.mp4" type="video/mp4"></video>';
-			var demo1 = function() {
+			var demo = function(id, valign, halign) {
 				var v = document.getElementById('video');
 				if (v !== null) v.parentNode.removeChild(v);
 				document.body.innerHTML += video;
-
-				document.getElementById('demo1').className = 'button active';
-				document.getElementById('demo2').className = 'button';
+				document.getElementsByClassName('active')[0].className = 'button';
+				document.getElementById(id).className = 'button active';
 
 				var contain = new ContainElement({
 					id: 'video',
 					height: '720',
 					width: '1280',
+					valign: valign,
+					halign, halign,
 				});
 
 				window.onresize = contain.update;
 				screen.addEventListener('orientationchange', contain.update);
 			}
 
-			var demo2 = function() {
-				var v = document.getElementById('video');
-				if (v !== null) v.parentNode.removeChild(v);
-				document.body.innerHTML += video;
-
-				document.getElementById('demo1').className = 'button';
-				document.getElementById('demo2').className = 'button active';
-
-				var contain = new ContainElement({
-					id: 'video',
-					height: '720',
-					width: '1280',
-				});
-			}
-
-			window.onload = demo1;
+			window.onload = function() {
+				demo('demo5', 'middle', 'middle');
+			};
 		</script>
 
 		<div class="buttons">
@@ -110,8 +101,25 @@
 				<ul>
 					<li><a href="https://github.com/WilliamsNY/contain-element">Download On GitHub</a></li>
 				</ul>
-				<div class="button" id="demo1" onclick="demo1();">With Resize</div>
-				<div class="button" id="demo2" onclick="demo2();">Without Resize</div>
+
+
+				<div class="button" id="demo1" onclick="demo('demo1', 'top', 'left');">top left</div>
+				<div class="button" id="demo2" onclick="demo('demo2', 'top', 'middle');">top middle</div>
+				<div class="button" id="demo3" onclick="demo('demo3', 'top', 'right');">top right</div>
+
+				<br/>
+
+				<div class="button" id="demo4" onclick="demo('demo4', 'middle', 'left');">middle left</div>
+				<div class="button active" id="demo5" onclick="demo('demo5', 'middle', 'middle');">middle middle</div>
+				<div class="button" id="demo6" onclick="demo('demo6', 'middle', 'right');">middle right</div>
+
+				<br/>
+
+				<div class="button" id="demo7" onclick="demo('demo7', 'bottom', 'left');">bottom left</div>
+				<div class="button" id="demo8" onclick="demo('demo8', 'bottom', 'middle');">bottom middle</div>
+				<div class="button" id="demo9" onclick="demo('demo9', 'bottom', 'right');">bottom right</div>
+
+
 				<a class="video-credit" href="http://www.eso.org/public/">Video Credit ESO</a>
 			</div>
 		</div>
