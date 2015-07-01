@@ -4,7 +4,7 @@ A JavaScript plugin to contain an element within its parent element.
 
 ## Description
 
-The plugin scales an element to the minimum size required for it to be completely contained within its parent, and retains its original aspect ratio by cropping portions that don't fit based on its vertical and horizontal alignment (by default both are set to: `middle`).
+The plugin scales an element to the minimum size required for it to be completely contained within its parent, and retains its original aspect ratio by cropping portions that don't fit based on its vertical and horizontal alignment (by default both are set to: `center`).
 
 [Demo](http://williamsny.github.io/contain-element/)
 
@@ -23,8 +23,8 @@ window.onload = function() {
         id: 'element', // the id of the element to be contained
         width: '100', // (optional) element width in pixels (unset: element width)
         height: '100', // (optional) element height in pixels (unset: element height)
-        valign: 'top', // (optional) vertical alignment: top|bottom (unset: middle)
-        halign: 'left' // (optional) horizontal alignment: left|right (unset: middle)
+        valign: 'top', // (optional) vertical alignment: top|bottom (unset: center)
+        halign: 'left' // (optional) horizontal alignment: left|right (unset: center)
     });
 
     // (example) update the size and positioning on window resize

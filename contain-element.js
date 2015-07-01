@@ -40,7 +40,7 @@ function ContainElement(options) {
 						element.style.left = (0 - ((elementWidth * scaleFactor) - parentWidth)) + 'px';
 						break;
 					default:
-						// anchor horizontally to the middle of the parent element
+						// anchor horizontally to the center of the parent element
 						element.style.left = (0 - (((elementWidth * scaleFactor) - parentWidth) / 2 )) + 'px';
 				}
 			} else {
@@ -59,7 +59,7 @@ function ContainElement(options) {
 						element.style.top = (0 - ((elementHeight * scaleFactor) - parentHeight)) + 'px';
 						break;
 					default:
-						// anchor vertically to the middle of the parent element
+						// anchor vertically to the center of the parent element
 						element.style.top = (0 - (((elementHeight * scaleFactor) - parentHeight) / 2 )) + 'px';
 				}
 			} else {
