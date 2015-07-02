@@ -4,10 +4,10 @@ function ContainElement(options) {
 	var elementWidth = options.width || element.offsetWidth;
 	var elementHeight = options.height || element.offsetHeight;
 
-	// Apply required attributes to the element and its parents if they aren't already set
+	// Apply required attributes to the element and its parents
 	element.style.position = 'absolute';
 	element.parentElement.style.overflow = 'hidden';
-	if (['relative', 'absolute', 'fixed'].indexOf(window.getComputedStyle(element.parentElement,null).getPropertyValue('position')) === -1)
+	if (['relative', 'absolute', 'fixed'].indexOf(window.getComputedStyle(element.parentElement, null).getPropertyValue('position')) === -1)
 		element.parentElement.style.position = 'relative';
 
 	function updateContain() {
@@ -30,16 +30,16 @@ function ContainElement(options) {
 			if (parentWidth < (elementWidth * scaleFactor)) {
 				switch(options.halign) {
 					case 'left':
-						// anchor horizontally to the left of the parent element
+						// Anchor horizontally to the left of the parent element
 						element.style.left = 0 + 'px';
 						break;
 					case 'right':
-						// anchor horizontally to the right of the parent element
+						// Anchor horizontally to the right of the parent element
 						element.style.left = (0 - ((elementWidth * scaleFactor) - parentWidth)) + 'px';
 						break;
 					default:
-						// anchor horizontally to the center of the parent element
-						element.style.left = (0 - (((elementWidth * scaleFactor) - parentWidth) / 2 )) + 'px';
+						// Anchor horizontally to the center of the parent element
+						element.style.left = (0 - (((elementWidth * scaleFactor) - parentWidth) / 2)) + 'px';
 				}
 			} else {
 				element.style.left = 0 + 'px';
@@ -49,16 +49,16 @@ function ContainElement(options) {
 			if ((elementHeight * scaleFactor) > parentHeight) {
 				switch(options.valign) {
 					case 'top':
-						// anchor vertically to the top of the parent element
+						// Anchor vertically to the top of the parent element
 						element.style.top = 0 + 'px';
 						break;
 					case 'bottom':
-						// anchor veritcally to the bottom of the parent element
+						// Anchor veritcally to the bottom of the parent element
 						element.style.top = (0 - ((elementHeight * scaleFactor) - parentHeight)) + 'px';
 						break;
 					default:
-						// anchor vertically to the center of the parent element
-						element.style.top = (0 - (((elementHeight * scaleFactor) - parentHeight) / 2 )) + 'px';
+						// Anchor vertically to the center of the parent element
+						element.style.top = (0 - (((elementHeight * scaleFactor) - parentHeight) / 2)) + 'px';
 				}
 			} else {
 				element.style.top = 0 + 'px';
