@@ -9,7 +9,7 @@ function ContainElement(options) {
 		element.style.position = 'absolute';
 	if (element.parentElement.style.overflow != 'hidden')
 		element.parentElement.style.overflow = 'hidden';
-	if (element.parentElement.style.position != 'relative' && element.parentElement.style.position != 'absolute' && element.parentElement.style.position != 'fixed')
+	if (['relative', 'absolute', 'fixed'].indexOf(element.parentElement.style.position) === -1)
 		element.parentElement.style.position = 'relative';
 
 	function updateContain() {
