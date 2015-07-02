@@ -26,7 +26,7 @@ function ContainElement(options) {
 			element.style.width = (elementWidth * scaleFactor) + 'px';
 			element.style.height = (elementHeight * scaleFactor) + 'px';
 
-			// Anchor the element horizontally to the left/middle/right
+			// Anchor the element horizontally to the left/center/right
 			if (parentWidth < (elementWidth * scaleFactor)) {
 				switch(options.halign) {
 					case 'left':
@@ -45,7 +45,7 @@ function ContainElement(options) {
 				element.style.left = 0 + 'px';
 			}
 
-			// Anchor the element vertically to the top/middle/bottom
+			// Anchor the element vertically to the top/center/bottom
 			if ((elementHeight * scaleFactor) > parentHeight) {
 				switch(options.valign) {
 					case 'top':
