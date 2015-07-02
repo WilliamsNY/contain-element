@@ -14,7 +14,7 @@ function ContainElement(options) {
 		var parentWidth = element.parentElement.offsetWidth;
 		var parentHeight = element.parentElement.offsetHeight;
 
-		// Run the scale/position functionality if able to determine the document width and height
+		// Run the scale/position functionality if able to determine the parent element's width and height
 		if ((parentWidth) && (parentHeight)) {
 			// Calculate the scale factor
 			if (parentWidth > ((parentHeight / (elementHeight * scaleFactor)) * (elementWidth * scaleFactor)))
