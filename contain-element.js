@@ -5,11 +5,9 @@ function ContainElement(options) {
 	var elementHeight = options.height || element.offsetHeight;
 
 	// Apply required attributes to the element and its parents if they aren't already set
-	if (element.style.position != 'absolute')
-		element.style.position = 'absolute';
-	if (element.parentElement.style.overflow != 'hidden')
-		element.parentElement.style.overflow = 'hidden';
-	if (['relative', 'absolute', 'fixed'].indexOf(element.parentElement.style.position) === -1)
+	element.style.position = 'absolute';
+	element.parentElement.style.overflow = 'hidden';
+	if (['relative', 'absolute', 'fixed'].indexOf(window.getComputedStyle(element.parentElement,null).getPropertyValue('position')) === -1)
 		element.parentElement.style.position = 'relative';
 
 	function updateContain() {
