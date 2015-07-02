@@ -76,7 +76,7 @@
 	<body>
 		<script>
 			var video = '<video id="video" autoplay muted loop><source src="http://wny.s3.amazonaws.com/videos/TheenclosureoftheNextGenerationTransitSurvey.webm" type="video/webm"><source src="http://wny.s3.amazonaws.com/videos/TheenclosureoftheNextGenerationTransitSurvey.mp4" type="video/mp4"></video>';
-			var demo = function(id, valign, halign) {
+			var demo = function(id, verticalAlign, horizontalAlign) {
 				var v = document.getElementById('video');
 				if (v !== null) v.parentNode.removeChild(v);
 				document.body.innerHTML += video;
@@ -88,14 +88,14 @@
 					id: 'video',
 					height: '720',
 					width: '1280',
-					valign: valign,
-					halign, halign,
+					valign: verticalAlign,
+					halign, horizontalAlign
 				});
 
 				window.onresize = contain.update;
-				screen.addEventListener('orientationchange', contain.update);
+				window.addEventListener('orientationchange', contain.update);
 				// ----- Relevant code above ----- //
-			}
+			};
 
 			window.onload = function() {
 				demo('demo5', 'center', 'center');
@@ -105,40 +105,35 @@
 		<div class="buttons">
 			<div class="demo">
 				<h1>Contain Element</h1>
-				<p>
-					A JavaScript plugin to contain an element within its parent element.
-				</p>
+				<p>A JavaScript plugin to contain an element within its parent element.</p>
 
-				<ul>
-					<li><a href="https://github.com/WilliamsNY/contain-element">Download On GitHub</a></li>
-				</ul>
+				<ul><li><a href="https://github.com/WilliamsNY/contain-element">Download On GitHub</a></li></ul>
 
-				<hr>
+				<hr />
 
 				<p>
-					<i>
-						The video in the background is the example.
-						<br/>Change the positioning below and resize your browser to compare.
-					</i>
+					<em>The video in the background is the example.</em>
+					<br />
+					<em>Change the positioning below and resize your browser to compare.</em>
 				</p>
 
 				<div class="button" id="demo1" onclick="demo('demo1', 'top', 'left');">top left</div>
 				<div class="button" id="demo2" onclick="demo('demo2', 'top', 'center');">top center</div>
 				<div class="button" id="demo3" onclick="demo('demo3', 'top', 'right');">top right</div>
 
-				<br/>
+				<br />
 
 				<div class="button" id="demo4" onclick="demo('demo4', 'center', 'left');">center left</div>
 				<div class="button active" id="demo5" onclick="demo('demo5', 'center', 'center');">center center</div>
 				<div class="button" id="demo6" onclick="demo('demo6', 'center', 'right');">center right</div>
 
-				<br/>
+				<br />
 
 				<div class="button" id="demo7" onclick="demo('demo7', 'bottom', 'left');">bottom left</div>
 				<div class="button" id="demo8" onclick="demo('demo8', 'bottom', 'center');">bottom center</div>
 				<div class="button" id="demo9" onclick="demo('demo9', 'bottom', 'right');">bottom right</div>
 
-				<br/>
+				<br />
 
 				<a class="video-credit" href="http://www.eso.org/public/">Video Credit ESO</a>
 			</div>
