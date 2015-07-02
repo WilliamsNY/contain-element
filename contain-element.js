@@ -64,7 +64,7 @@ function ContainElement(options) {
 				element.style.top = 0 + 'px';
 			}
 		} else {
-			// Try again in 30ms if the document didn't load enough to determine its width and height yet
+			// Try again in 30ms if the document didn't load enough to determine the parent element's width and height yet
 			window.setTimeout(updateContain, 30);
 		}
 	}
