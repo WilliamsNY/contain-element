@@ -69,10 +69,10 @@ function ContainElement(options) {
 		}
 	}
 
-	// Run the scale function and bind it to various window-size-changing events
+	// Run the function to scale and anchor the element
 	updateContain();
 
-	// Add scale function to the library
+	// Add an external scale and anchor update function
 	this.update = updateContain;
 }
 
