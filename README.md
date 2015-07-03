@@ -21,8 +21,8 @@ The plugin scales an element to the minimum size required for it to be completel
 window.onload = function() {
     var contain = new ContainElement({
         id: 'element', // the id of the element to be contained
-        width: '100', // (optional) element width in pixels (unset: element width)
-        height: '100', // (optional) element height in pixels (unset: element height)
+        width: '100', // (optional) native element width in pixels (unset: detected element width)
+        height: '100', // (optional) native element height in pixels (unset: detected element height)
         valign: 'top', // (optional) vertical alignment: top|bottom (unset: center)
         halign: 'left' // (optional) horizontal alignment: left|right (unset: center)
     });
