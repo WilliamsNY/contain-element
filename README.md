@@ -13,7 +13,6 @@ The plugin scales an element to the minimum size required for it to be completel
 * Pure JavaScript with no dependencies
 * Configures the horizontal and vertical alignment of the contained element
 * Can detect the native size or have it specified at runtime
-* Includes function to update the size and position
 
 ## Usage
 
@@ -34,6 +33,11 @@ window.onload = function() {
     window.addEventListener('orientationchange', contain.update);
 };
 ```
+
+## Functions
+
+* `update()`: Update the size and position of the contained element.
+* `getScale()`: Return the current scale factor being applied to the contained element.
 
 ## Credits
 

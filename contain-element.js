@@ -74,5 +74,8 @@ function ContainElement(options) {
 
     // Add an external scale and anchor update function
     this.update = updateContain;
+
+    // Add function to return the current scale factor
+    this.getScale = function() { return scaleFactor; };
 }
 
