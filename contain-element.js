@@ -1,8 +1,10 @@
 function ContainElement(options) {
-    var scaleFactor = 1;
-    var element = document.getElementById(options.id);
-    var elementWidth = options.width || element.offsetWidth;
-    var elementHeight = options.height || element.offsetHeight;
+    var scaleFactor = 1,
+        element = document.getElementById(options.id),
+        elementWidth = options.width || element.offsetWidth,
+        elementHeight = options.height || element.offsetHeight,
+        valign = options.valign || 'center',
+        halign = options.halign || 'center';
 
     // Apply required attributes to the element and its parents
     element.style.position = 'absolute';
@@ -11,8 +13,8 @@ function ContainElement(options) {
         element.parentElement.style.position = 'relative';
 
     function updateContain() {
-        var parentWidth = element.parentElement.offsetWidth;
-        var parentHeight = element.parentElement.offsetHeight;
+        var parentWidth = element.parentElement.offsetWidth,
+            parentHeight = element.parentElement.offsetHeight;
 
         // Run the scale/position functionality if able to determine the parent element's width and height
         if ((parentWidth) && (parentHeight)) {
@@ -28,7 +30,7 @@ function ContainElement(options) {
 
             // Anchor the element horizontally to the left/center/right
             if (parentWidth < (elementWidth * scaleFactor)) {
-                switch(options.halign) {
+                switch(halign) {
                     case 'left':
                         // Anchor horizontally to the left of the parent element
                         element.style.left = 0 + 'px';
@@ -47,7 +49,7 @@ function ContainElement(options) {
 
             // Anchor the element vertically to the top/center/bottom
             if ((elementHeight * scaleFactor) > parentHeight) {
-                switch(options.valign) {
+                switch(valign) {
                     case 'top':
                         // Anchor vertically to the top of the parent element
                         element.style.top = 0 + 'px';
@@ -72,10 +74,34 @@ function ContainElement(options) {
     // Run the function to scale and anchor the element
     updateContain();
 
-    // Add an external scale and anchor update function
+    // External scale and anchor update function
     this.update = updateContain;
 
-    // Add function to return the current scale factor
+    // External function to set elementWidth
+    this.setWidth = function(newWidth) { elementWidth = newWidth; };
+
+    // External function to set elementHeight
+    this.setHeight = function(newHeight) { elementHeight = newHeight; };
+
+    // External function to set valign
+    this.setValign = function(newValign) { valign = newValign; };
+
+    // External function to set halign
+    this.setHalign = function(newHalign) { halign = newHalign; };
+
+    // External function to get the current elementWidth
+    this.getWidth = function() { return elementWidth; };
+
+    // External function to get the current elementHeight
+    this.getHeight = function() { return elementHeight; };
+
+    // External function to get the current valign
+    this.getValign = function() { return valign; };
+
+    // External function to get the current halign
+    this.getHalign = function() { return halign; };
+
+    // External function to return the current scale factor
     this.getScale = function() { return scaleFactor; };
 }
 

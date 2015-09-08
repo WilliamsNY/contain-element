@@ -37,6 +37,14 @@ window.onload = function() {
 ## Functions
 
 * `update()`: Update the size and position of the contained element.
+* `setWidth(width)`: Set the width (run `update()` to apply).
+* `setHeight(height)`: Set the height (run `update()` to apply).
+* `setValign(valign)`: Set the vertical alignment (run `update()` to apply).
+* `setHalign(halign)`: Set the horizontal alignment (run `update()` to apply).
+* `getWidth()`: Return the current width.
+* `getHeight()`: Return the current height.
+* `getValign()`: Return the current vertical alignment.
+* `getHalign()`: Return the current horizontal alignment.
 * `getScale()`: Return the current scale factor being applied to the contained element.
 
 ## Credits
