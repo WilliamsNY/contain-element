@@ -1,143 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Contain Element - Examples</title>
-		<script type="text/javascript" src="contain-element.min.js"></script>
-		<style>
-			html,
-			body {
-				height: 100%;
-				width: 100%;
-				margin: 0;
-				color: #f6f6f6;
-				background-color: #212121;
-				font-family: 'Helvetica Neue', 'Helvetica', 'sans-serif';
-				font-size: 13px;
-			}
+    <head>
+        <meta charset="UTF-8">
+        <title>Contain Element - Examples</title>
+        <script type="text/javascript" src="contain-element.js"></script>
+        <style>
+            html,
+            body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                color: #f6f6f6;
+                background-color: #212121;
+                font-family: 'Helvetica Neue', 'Helvetica', 'sans-serif';
+                font-size: 13px;
+            }
 
-			a {
-				color: #f6f6f6;
-			}
+            a {
+                color: #f6f6f6;
+            }
 
-			h1 {
-				margin: 0;
-			}
+            h1 {
+                margin: 0;
+            }
 
-			ul {
-				padding: 0;
-				list-style: none;
-			}
+            ul {
+                padding: 0;
+                list-style: none;
+            }
 
-			hr {
-				max-width: 300px;
-				border: 0;
-				border-bottom: 1px solid #f6f6f6;
-				opacity: .5;
-			}
+            hr {
+                max-width: 300px;
+                border: 0;
+                border-bottom: 1px solid #f6f6f6;
+                height: 10px;
+                opacity: .5;
+            }
 
-			.buttons {
-				position: fixed;
-				display: table;
-				width: 100%;
-				height: 100%;
-				z-index: 2;
-			}
+            .buttons {
+                position: fixed;
+                display: table;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
+            }
 
-			.buttons .demo {
-				display: table-cell;
-				vertical-align: middle;
-				text-align: center;
-			}
+            .buttons .demo {
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+            }
 
-			.button {
-				display: inline-block;
-				background: #212121;
-				padding: 10px;
-				width: 100px;
-				margin: 5px;
-				opacity: .5;
-				cursor: pointer;
-			}
+            .button {
+                display: inline-block;
+                background: #212121;
+                padding: 10px;
+                width: 100px;
+                margin: 5px;
+                opacity: .5;
+                cursor: pointer;
+            }
 
-			.button:hover,
-			.button.active {
-				opacity: 1;
-			}
+            .button:hover,
+            .button.active {
+                opacity: 1;
+            }
 
-			.video-credit {
-				display: inline;
-				margin: 10px;
-				font-size: 10px;
-			}
-		</style>
-	</head>
-	<body>
-		<script>
-			var video = '<video id="video" autoplay muted loop poster="TheenclosureoftheNextGenerationTransitSurvey.jpg"><source src="http://wny.s3.amazonaws.com/videos/TheenclosureoftheNextGenerationTransitSurvey.webm" type="video/webm"><source src="http://wny.s3.amazonaws.com/videos/TheenclosureoftheNextGenerationTransitSurvey.mp4" type="video/mp4"></video>';
-			var demo = function(id, valign, halign) {
-				var v = document.getElementById('video');
-				if (v !== null) v.parentNode.removeChild(v);
-				document.body.innerHTML += video;
-				document.getElementsByClassName('active')[0].className = 'button';
-				document.getElementById(id).className = 'button active';
+            .video-credit {
+                display: inline-block;
+                margin: 10px;
+                font-size: 10px;
+            }
 
-				// ------ Relevant code below ----- //
-				var contain = new ContainElement({
-					id: 'video',
-					height: '720',
-					width: '1280',
-					valign: valign,
-					halign: halign
-				});
+            .fork-me {
+                position: absolute;
+                top: 0;
+                right: 0;
+                border: 0;
+                z-index: 4;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var contain, demo;
 
-				window.onresize = contain.update;
-				window.addEventListener('orientationchange', contain.update);
-				// ----- Relevant code above ----- //
-			};
+            window.onload = function() {
+                contain = new ContainElement({
+                    id: 'video',
+                    height: '720',
+                    width: '1280'
+                });
 
-			window.onload = function() {
-				demo('demo5', 'center', 'center');
-			};
-		</script>
+                demo = function(id, valign, halign) {
+                    document.getElementsByClassName('active')[0].className = 'button';
+                    document.getElementById(id).className = 'button active';
+                    contain.setValign(valign);
+                    contain.setHalign(halign);
+                    contain.update();
+                };
 
-		<div class="buttons">
-			<div class="demo">
-				<h1>Contain Element</h1>
-				<p>A JavaScript plugin to contain an element within its parent element.</p>
+                window.onresize = contain.update;
+                window.addEventListener('orientationchange', contain.update);
+            };
+        </script>
 
-				<ul><li><a href="https://github.com/WilliamsNY/contain-element">Download On GitHub</a></li></ul>
+        <div class="buttons">
+            <div class="demo">
+                <h1>Contain Element</h1>
+                <p>A JavaScript plugin to contain an element within its parent element.</p>
+                <ul><li><a href="https://github.com/WilliamsNY/contain-element">Download On GitHub</a></li></ul>
 
-				<hr />
+                <hr />
 
-				<p>
-					<em>The video in the background is the example.</em>
-					<br />
-					<em>Change the positioning below and resize your browser to compare.</em>
-				</p>
+                <p>
+                    <em>The video in the background is the example.</em>
+                    <br />
+                    <em>Change the positioning below and resize your browser to compare.</em>
+                </p>
 
-				<div class="button" id="demo1" onclick="demo('demo1', 'top', 'left');">top left</div>
-				<div class="button" id="demo2" onclick="demo('demo2', 'top', 'center');">top center</div>
-				<div class="button" id="demo3" onclick="demo('demo3', 'top', 'right');">top right</div>
+                <div class="button" id="demo1" onclick="demo('demo1', 'top', 'left');">top left</div>
+                <div class="button" id="demo2" onclick="demo('demo2', 'top', 'center');">top center</div>
+                <div class="button" id="demo3" onclick="demo('demo3', 'top', 'right');">top right</div>
+                <br />
+                <div class="button" id="demo4" onclick="demo('demo4', 'center', 'left');">center left</div>
+                <div class="button active" id="demo5" onclick="demo('demo5', 'center', 'center');">center center</div>
+                <div class="button" id="demo6" onclick="demo('demo6', 'center', 'right');">center right</div>
+                <br />
+                <div class="button" id="demo7" onclick="demo('demo7', 'bottom', 'left');">bottom left</div>
+                <div class="button" id="demo8" onclick="demo('demo8', 'bottom', 'center');">bottom center</div>
+                <div class="button" id="demo9" onclick="demo('demo9', 'bottom', 'right');">bottom right</div>
 
-				<br />
+                <br />
 
-				<div class="button" id="demo4" onclick="demo('demo4', 'center', 'left');">center left</div>
-				<div class="button active" id="demo5" onclick="demo('demo5', 'center', 'center');">center center</div>
-				<div class="button" id="demo6" onclick="demo('demo6', 'center', 'right');">center right</div>
+                <a class="video-credit" href="http://www.eso.org/public/">Video Credit ESO</a>
+            </div>
+        </div>
 
-				<br />
+        <a href="https://github.com/WilliamsNY/contain-element">
+            <img class="fork-me" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" />
+        </a>
 
-				<div class="button" id="demo7" onclick="demo('demo7', 'bottom', 'left');">bottom left</div>
-				<div class="button" id="demo8" onclick="demo('demo8', 'bottom', 'center');">bottom center</div>
-				<div class="button" id="demo9" onclick="demo('demo9', 'bottom', 'right');">bottom right</div>
-
-				<br />
-
-				<a class="video-credit" href="http://www.eso.org/public/">Video Credit ESO</a>
-			</div>
-		</div>
-
-		<a href="https://github.com/WilliamsNY/contain-element"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 4;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" /></a>
-	</body>
+        <video id="video" autoplay muted loop poster="TheenclosureoftheNextGenerationTransitSurvey.jpg">
+            <source src="http://wny.s3.amazonaws.com/videos/TheenclosureoftheNextGenerationTransitSurvey.webm" type="video/webm">
+            <source src="http://wny.s3.amazonaws.com/videos/TheenclosureoftheNextGenerationTransitSurvey.mp4" type="video/mp4">
+        </video>
+    </body>
 </html>
