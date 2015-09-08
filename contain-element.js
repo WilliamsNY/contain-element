@@ -89,16 +89,16 @@ function ContainElement(options) {
     // External function to set halign
     this.setHalign = function(newHalign) { halign = newHalign; };
 
-    // External function to get the current elementWidth
+    // External function to return the current elementWidth
     this.getWidth = function() { return elementWidth; };
 
-    // External function to get the current elementHeight
+    // External function to return the current elementHeight
     this.getHeight = function() { return elementHeight; };
 
-    // External function to get the current valign
+    // External function to return the current valign
     this.getValign = function() { return valign; };
 
-    // External function to get the current halign
+    // External function to return the current halign
     this.getHalign = function() { return halign; };
 
     // External function to return the current scale factor
