@@ -3,67 +3,75 @@ function ContainElement(options) {
         element = document.getElementById(options.id),
         elementWidth = options.width || element.offsetWidth,
         elementHeight = options.height || element.offsetHeight,
-        valign = options.valign || 'center',
-        halign = options.halign || 'center';
+        valign = options.valign || "center",
+        halign = options.halign || "center";
 
-    // Apply required attributes to the element and its parents
-    element.style.position = 'absolute';
-    element.parentElement.style.overflow = 'hidden';
-    if (['relative', 'absolute', 'fixed'].indexOf(window.getComputedStyle(element.parentElement, null).getPropertyValue('position')) === -1)
-        element.parentElement.style.position = 'relative';
+    // Apply required attributes to the element
+    element.style.position = "absolute";
+    element.parentElement.style.overflow = "hidden";
+
+    // Apply relative position to the parent if it doesn't already have relative, absolute or fixed positioning
+    if ([ "relative", "absolute", "fixed" ].indexOf(window.getComputedStyle(element.parentElement, null).getPropertyValue("position")) === -1) {
+        element.parentElement.style.position = "relative";
+    }
 
     function updateContain() {
         var parentWidth = element.parentElement.offsetWidth,
             parentHeight = element.parentElement.offsetHeight;
 
         // Run the scale/position functionality if able to determine the parent element's width and height
-        if ((parentWidth) && (parentHeight)) {
+        if (parentWidth && parentHeight) {
             // Calculate the scale factor
-            if (parentWidth > ((parentHeight / (elementHeight * scaleFactor)) * (elementWidth * scaleFactor)))
-                scaleFactor = (parentWidth / elementWidth);
-            else
-                scaleFactor = (parentHeight / elementHeight);
+            if (parentWidth > parentHeight / (elementHeight * scaleFactor) * (elementWidth * scaleFactor)) {
+                scaleFactor = parentWidth / elementWidth;
+            } else {
+                scaleFactor = parentHeight / elementHeight;
+            }
 
             // Scale the element using the scale factor
-            element.style.width = (elementWidth * scaleFactor) + 'px';
-            element.style.height = (elementHeight * scaleFactor) + 'px';
+            element.style.width = elementWidth * scaleFactor + "px";
+            element.style.height = elementHeight * scaleFactor + "px";
 
             // Anchor the element horizontally to the left/center/right
-            if (parentWidth < (elementWidth * scaleFactor)) {
-                switch(halign) {
-                    case 'left':
+            if (parentWidth < elementWidth * scaleFactor) {
+                switch (halign) {
+                    case "left":
                         // Anchor horizontally to the left of the parent element
-                        element.style.left = 0 + 'px';
+                        element.style.left = "0px";
                         break;
-                    case 'right':
+
+                    case "right":
                         // Anchor horizontally to the right of the parent element
-                        element.style.left = (0 - ((elementWidth * scaleFactor) - parentWidth)) + 'px';
+                        element.style.left = 0 - (elementWidth * scaleFactor - parentWidth) + "px";
                         break;
+
                     default:
                         // Anchor horizontally to the center of the parent element
-                        element.style.left = (0 - (((elementWidth * scaleFactor) - parentWidth) / 2)) + 'px';
+                        element.style.left = 0 - (elementWidth * scaleFactor - parentWidth) / 2 + "px";
                 }
             } else {
-                element.style.left = 0 + 'px';
+                element.style.left = "0px";
             }
 
             // Anchor the element vertically to the top/center/bottom
-            if ((elementHeight * scaleFactor) > parentHeight) {
-                switch(valign) {
-                    case 'top':
+            if (elementHeight * scaleFactor > parentHeight) {
+                switch (valign) {
+                    case "top":
                         // Anchor vertically to the top of the parent element
-                        element.style.top = 0 + 'px';
+                        element.style.top = "0px";
                         break;
-                    case 'bottom':
+
+                    case "bottom":
                         // Anchor veritcally to the bottom of the parent element
-                        element.style.top = (0 - ((elementHeight * scaleFactor) - parentHeight)) + 'px';
+                        element.style.top = 0 - (elementHeight * scaleFactor - parentHeight) + "px";
                         break;
+
                     default:
                         // Anchor vertically to the center of the parent element
-                        element.style.top = (0 - (((elementHeight * scaleFactor) - parentHeight) / 2)) + 'px';
+                        element.style.top = 0 - (elementHeight * scaleFactor - parentHeight) / 2 + "px";
                 }
             } else {
-                element.style.top = 0 + 'px';
+                element.style.top = "0px";
             }
         } else {
             // Try again in 30ms if the document didn't load enough to determine the parent element's width and height yet
@@ -104,4 +112,3 @@ function ContainElement(options) {
     // External function to return the current scale factor
     this.getScale = function() { return scaleFactor; };
 }
-

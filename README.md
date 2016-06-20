@@ -59,4 +59,3 @@ Written by [Williams New York](http://williamsnewyork.com)
 ## LICENSE
 
 Licensed under the [MIT license](http://opensource.org/licenses/MIT).
-
