@@ -1,6 +1,6 @@
 function ContainElement(options) {
     var scaleFactor = 1,
-        element = document.getElementById(options.id),
+        element = options.element || document.getElementById(options.id),
         elementWidth = options.width || element.offsetWidth,
         elementHeight = options.height || element.offsetHeight,
         valign = options.valign || "center",
