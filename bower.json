@@ -6,7 +6,7 @@
     "Luke Evers"
   ],
   "license": "MIT",
-  "main": "./contain-element.min.js",
+  "main": "./contain-element.js",
   "ignore": [
     "**/.*"
   ],
