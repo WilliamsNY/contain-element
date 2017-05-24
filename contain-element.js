@@ -4,11 +4,17 @@ function ContainElement(options) {
         elementWidth = options.width || element.offsetWidth,
         elementHeight = options.height || element.offsetHeight,
         valign = options.valign || "center",
-        halign = options.halign || "center";
+        halign = options.halign || "center",
+        scale = options.scale;
 
     // Apply required attributes to the element
     element.style.position = "absolute";
     element.parentElement.style.overflow = "hidden";
+
+    // Apply required transform-origin if the scale option is set to true
+    if (scale) {
+        element.style.transformOrigin = "left top";
+    }
 
     // Apply relative position to the parent if it doesn't already have relative, absolute or fixed positioning
     if ([ "relative", "absolute", "fixed" ].indexOf(window.getComputedStyle(element.parentElement, null).getPropertyValue("position")) === -1) {
@@ -29,8 +35,12 @@ function ContainElement(options) {
             }
 
             // Scale the element using the scale factor
-            element.style.width = elementWidth * scaleFactor + "px";
-            element.style.height = elementHeight * scaleFactor + "px";
+            if (scale) {
+                element.style.transform = "scale(" + scaleFactor + ")";
+            } else {
+                element.style.width = elementWidth * scaleFactor + "px";
+                element.style.height = elementHeight * scaleFactor + "px";
+            }
 
             // Anchor the element horizontally to the left/center/right
             if (parentWidth < elementWidth * scaleFactor) {

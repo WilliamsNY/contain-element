@@ -24,14 +24,15 @@ window.onload = function() {
         width: 100, // (optional) native element width in pixels (unset: detected element width)
         height: 100, // (optional) native element height in pixels (unset: detected element height)
         valign: "top", // (optional) vertical alignment: top|bottom (unset: center)
-        halign: "left" // (optional) horizontal alignment: left|right (unset: center)
+        halign: "left", // (optional) horizontal alignment: left|right (unset: center)
+        scale: true // (optional) use transform scale instead of width and height (unset: false)
     });
 
     // (example) update the size and positioning on window resize
     window.onresize = contain.update;
 
     // (example) update the size and positioning on orientation change
-    window.addEventListener('orientationchange', contain.update);
+    window.addEventListener("orientationchange", contain.update);
 };
 ```
 
