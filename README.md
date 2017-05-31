@@ -23,8 +23,9 @@ window.onload = function() {
         id: "element", // the id of the element to be contained (alternative to 'element')
         width: 100, // (optional) native element width in pixels (unset: detected element width)
         height: 100, // (optional) native element height in pixels (unset: detected element height)
-        valign: "top", // (optional) vertical alignment: top|bottom (unset: center)
-        halign: "left", // (optional) horizontal alignment: left|right (unset: center)
+        valign: "top", // (optional) vertical alignment: center|top|bottom (unset: center)
+        halign: "left", // (optional) horizontal alignment: center|left|right (unset: center)
+        fit: "contain", // (optional) object fit: cover|contain (unset: cover)
         scale: true // (optional) use transform scale instead of width and height (unset: false)
     });
 
@@ -43,10 +44,12 @@ window.onload = function() {
 * `setHeight(height)`: Set the height (run `update()` to apply).
 * `setValign(valign)`: Set the vertical alignment (run `update()` to apply).
 * `setHalign(halign)`: Set the horizontal alignment (run `update()` to apply).
+* `setFit(fit)`: Set the object fit (run `update()` to apply).
 * `getWidth()`: Return the current width.
 * `getHeight()`: Return the current height.
 * `getValign()`: Return the current vertical alignment.
 * `getHalign()`: Return the current horizontal alignment.
+* `getFit()`: Return the current object fit.
 * `getScale()`: Return the current scale factor being applied to the contained element.
 
 ## Credits

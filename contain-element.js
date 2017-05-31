@@ -5,6 +5,7 @@ function ContainElement(options) {
         elementHeight = options.height || element.offsetHeight,
         valign = options.valign || "center",
         halign = options.halign || "center",
+        fit = options.fit || "cover",
         scale = options.scale;
 
     // Apply required attributes to the element
@@ -28,10 +29,20 @@ function ContainElement(options) {
         // Run the scale/position functionality if able to determine the parent element's width and height
         if (parentWidth && parentHeight) {
             // Calculate the scale factor
-            if (parentWidth > parentHeight / (elementHeight * scaleFactor) * (elementWidth * scaleFactor)) {
-                scaleFactor = parentWidth / elementWidth;
+            if (fit === "cover") {
+                if (parentWidth > parentHeight / elementHeight * elementWidth) {
+                    scaleFactor = parentWidth / elementWidth;
+                } else {
+                    scaleFactor = parentHeight / elementHeight;
+                }
+            } else if (fit === "contain") {
+                if (parentHeight > parentWidth / elementWidth * elementHeight) {
+                    scaleFactor = parentWidth / elementWidth;
+                } else {
+                    scaleFactor = parentHeight / elementHeight;
+                }
             } else {
-                scaleFactor = parentHeight / elementHeight;
+                scaleFactor = 1;
             }
 
             // Scale the element using the scale factor
@@ -43,7 +54,7 @@ function ContainElement(options) {
             }
 
             // Anchor the element horizontally to the left/center/right
-            if (parentWidth < elementWidth * scaleFactor) {
+            if (parentWidth !== elementWidth * scaleFactor) {
                 switch (halign) {
                     case "left":
                         // Anchor horizontally to the left of the parent element
@@ -64,7 +75,7 @@ function ContainElement(options) {
             }
 
             // Anchor the element vertically to the top/center/bottom
-            if (elementHeight * scaleFactor > parentHeight) {
+            if (parentHeight !== elementHeight * scaleFactor) {
                 switch (valign) {
                     case "top":
                         // Anchor vertically to the top of the parent element
@@ -107,6 +118,9 @@ function ContainElement(options) {
     // External function to set halign
     this.setHalign = function(newHalign) { halign = newHalign; };
 
+    // External function to set fit
+    this.setFit = function(newFit) { fit = newFit; };
+
     // External function to return the current elementWidth
     this.getWidth = function() { return elementWidth; };
 
@@ -118,6 +132,9 @@ function ContainElement(options) {
 
     // External function to return the current halign
     this.getHalign = function() { return halign; };
+
+    // External function to return the current fit
+    this.getFit = function() { return fit; };
 
     // External function to return the current scale factor
     this.getScale = function() { return scaleFactor; };
