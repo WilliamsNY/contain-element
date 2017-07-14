@@ -121,11 +121,17 @@ function ContainElement(options) {
     // External function to set fit
     this.setFit = function(newFit) { fit = newFit; };
 
-    // External function to return the current elementWidth
+    // External function to return the elementWidth
     this.getWidth = function() { return elementWidth; };
 
-    // External function to return the current elementHeight
+    // External function to return the elementHeight
     this.getHeight = function() { return elementHeight; };
+
+    // External function to return the current width
+    this.getCurrentWidth = function() { return scaleFactor * elementWidth; };
+
+    // External function to return the current height
+    this.getCurrentHeight = function() { return scaleFactor * elementHeight; };
 
     // External function to return the current valign
     this.getValign = function() { return valign; };

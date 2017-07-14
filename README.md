@@ -45,8 +45,10 @@ window.onload = function() {
 * `setValign(valign)`: Set the vertical alignment (run `update()` to apply).
 * `setHalign(halign)`: Set the horizontal alignment (run `update()` to apply).
 * `setFit(fit)`: Set the object fit (run `update()` to apply).
-* `getWidth()`: Return the current width.
-* `getHeight()`: Return the current height.
+* `getWidth()`: Return the element width.
+* `getHeight()`: Return the element height.
+* `getCurrentWidth()`: Return the current width.
+* `getCurrentHeight()`: Return the current height.
 * `getValign()`: Return the current vertical alignment.
 * `getHalign()`: Return the current horizontal alignment.
 * `getFit()`: Return the current object fit.
