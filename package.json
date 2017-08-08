@@ -1,7 +1,48 @@
 {
+  "name": "contain-element",
+  "description": "A JavaScript plugin to contain an element within its parent element.",
+  "version": "1.6.2",
+  "license": "MIT",
+  "main": "contain-element.min.js",
+  "homepage": "https://github.com/WilliamsNY/contain-element",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilliamsNY/contain-element.git"
+  },
+  "author": {
+    "name": "Kevin MacMartin",
+    "url": "https://github.com/prurigro"
+  },
+  "contributors": [
+    {
+      "name": "Luke Evers",
+      "url": "https://github.com/lukevers"
+    }
+  ],
+  "keywords": [
+    "javascript",
+    "contain",
+    "cover",
+    "scale",
+    "fit",
+    "object-fit",
+    "width",
+    "height",
+    "parent",
+    "child",
+    "element",
+    "alignment",
+    "horizontal",
+    "vertical",
+    "aspect-ratio"
+  ],
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-uglify": "^3.0.0"
+  },
+  "scripts": {
+    "start": "gulp"
   }
 }
