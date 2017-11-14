@@ -1,7 +1,7 @@
 {
   "name": "contain-element",
   "description": "A JavaScript plugin to contain an element within its parent element.",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "license": "MIT",
   "main": "contain-element.min.js",
   "homepage": "https://github.com/WilliamsNY/contain-element",
@@ -40,6 +40,7 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
+    "gulp-insert": "^0.5.0",
     "gulp-uglify": "^3.0.0"
   },
   "scripts": {

@@ -1,4 +1,4 @@
-function ContainElement(options) {
+module.exports = function(options) {
     var scaleFactor = 1,
         element = options.element || document.getElementById(options.id),
         elementWidth = options.width || element.offsetWidth,
@@ -144,6 +144,4 @@ function ContainElement(options) {
 
     // External function to return the current scale factor
     this.getScale = function() { return scaleFactor; };
-}
-
-export default ContainElement;
+};

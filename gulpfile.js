@@ -1,9 +1,15 @@
 const gulp = require("gulp"),
     ugly = require("gulp-uglify"),
-    concat = require("gulp-concat");
+    concat = require("gulp-concat"),
+    insert = require("gulp-insert");
 
 gulp.task("module", function() {
-    return gulp.src([ "contain-element.js", "module-template.js" ])
+    return gulp.src([ "contain-element.js" ])
+        .pipe(insert.transform(function(contents) {
+            return contents
+                .replace(/^function ContainElement/, "module.exports = function")
+                .replace(/\n\}/, "\n};");
+        }))
         .pipe(concat("contain-element-module.js"))
         .pipe(gulp.dest("./"));
 });
