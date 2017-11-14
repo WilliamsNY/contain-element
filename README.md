@@ -13,6 +13,7 @@ The plugin scales an element to the minimum size required for it to be completel
 * Pure JavaScript with no dependencies
 * Configures the horizontal and vertical alignment of the contained element
 * Can detect the native size or have it specified at runtime
+* Importable javascript module version included as `contain-element-module.js`
 
 ## Usage
 
