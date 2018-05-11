@@ -21,7 +21,7 @@ gulp.task("minify", function() {
         .pipe(gulp.dest("./"));
 });
 
-gulp.task("default", [
+gulp.task("default", gulp.parallel(
     "module",
     "minify"
-]);
+));

@@ -22,9 +22,47 @@ module.exports = function(options) {
         element.parentElement.style.position = "relative";
     }
 
+    // Convert halign to decimal percent
+    switch (halign) {
+        case "left":
+            halign = 0;
+            break;
+
+        case "center":
+            halign = 0.5;
+            break;
+
+        case "right":
+            halign = 1;
+            break;
+
+        default:
+            halign = Number(halign) / 100;
+    }
+
+    // Convert valign to decimal percent
+    switch (valign) {
+        case "top":
+            valign = 0;
+            break;
+
+        case "center":
+            valign = 0.5;
+            break;
+
+        case "bottom":
+            valign = 1;
+            break;
+
+        default:
+            valign = Number(valign) / 100;
+    }
+
     function updateContain() {
         var parentWidth = element.parentElement.offsetWidth,
-            parentHeight = element.parentElement.offsetHeight;
+            parentHeight = element.parentElement.offsetHeight,
+            rightAlignment = 0 - (elementWidth * scaleFactor - parentWidth),
+            bottomAlignment = 0 - (elementHeight * scaleFactor - parentHeight);
 
         // Run the scale/position functionality if able to determine the parent element's width and height
         if (parentWidth && parentHeight) {
@@ -53,50 +91,26 @@ module.exports = function(options) {
                 element.style.height = elementHeight * scaleFactor + "px";
             }
 
-            // Anchor the element horizontally to the left/center/right
+            // Align the element horizontally
             if (parentWidth !== elementWidth * scaleFactor) {
-                switch (halign) {
-                    case "left":
-                        // Anchor horizontally to the left of the parent element
-                        element.style.left = "0px";
-                        break;
-
-                    case "right":
-                        // Anchor horizontally to the right of the parent element
-                        element.style.left = 0 - (elementWidth * scaleFactor - parentWidth) + "px";
-                        break;
-
-                    default:
-                        // Anchor horizontally to the center of the parent element
-                        element.style.left = 0 - (elementWidth * scaleFactor - parentWidth) / 2 + "px";
-                }
+                // Align horizontally by percent
+                element.style.left = rightAlignment * halign + "px";
             } else {
+                // Align the element against the left if the width of the parent and element are the same
                 element.style.left = "0px";
             }
 
-            // Anchor the element vertically to the top/center/bottom
+            // Align the element vertically
             if (parentHeight !== elementHeight * scaleFactor) {
-                switch (valign) {
-                    case "top":
-                        // Anchor vertically to the top of the parent element
-                        element.style.top = "0px";
-                        break;
-
-                    case "bottom":
-                        // Anchor veritcally to the bottom of the parent element
-                        element.style.top = 0 - (elementHeight * scaleFactor - parentHeight) + "px";
-                        break;
-
-                    default:
-                        // Anchor vertically to the center of the parent element
-                        element.style.top = 0 - (elementHeight * scaleFactor - parentHeight) / 2 + "px";
-                }
+                // Align vertically by percent
+                element.style.top = bottomAlignment * valign + "px";
             } else {
+                // Align the element against the top if the height of the parent and element are the same
                 element.style.top = "0px";
             }
         } else {
             // Try again in 30ms if the document didn't load enough to determine the parent element's width and height yet
-            window.setTimeout(updateContain, 30);
+            setTimeout(updateContain, 30);
         }
     }
 
