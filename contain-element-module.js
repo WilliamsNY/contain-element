@@ -22,25 +22,7 @@ module.exports = function(options) {
         element.parentElement.style.position = "relative";
     }
 
-    function parseAlignment() {
-        // Convert halign to decimal percent
-        switch (halign) {
-            case "left":
-                halign = 0;
-                break;
-
-            case "center":
-                halign = 0.5;
-                break;
-
-            case "right":
-                halign = 1;
-                break;
-
-            default:
-                halign = Number(halign) / 100;
-        }
-
+    function parseVerticalAlignment() {
         // Convert valign to decimal percent
         switch (valign) {
             case "top":
@@ -57,6 +39,26 @@ module.exports = function(options) {
 
             default:
                 valign = Number(valign) / 100;
+        }
+    }
+
+    function parseHorizontalAlignment() {
+        // Convert halign to decimal percent
+        switch (halign) {
+            case "left":
+                halign = 0;
+                break;
+
+            case "center":
+                halign = 0.5;
+                break;
+
+            case "right":
+                halign = 1;
+                break;
+
+            default:
+                halign = Number(halign) / 100;
         }
     }
 
@@ -117,7 +119,8 @@ module.exports = function(options) {
     }
 
     // Parse the valign and halign options
-    parseAlignment();
+    parseVerticalAlignment();
+    parseHorizontalAlignment();
 
     // Run the function to scale and anchor the element
     updateContain();
@@ -127,24 +130,24 @@ module.exports = function(options) {
 
     // External function to set elementWidth
     this.setWidth = function(newWidth) {
-        elementWidth = newWidth;
+        elementWidth = Number(newWidth);
     };
 
     // External function to set elementHeight
     this.setHeight = function(newHeight) {
-        elementHeight = newHeight;
+        elementHeight = Number(newHeight);
     };
 
     // External function to set valign
     this.setValign = function(newValign) {
         valign = newValign;
-        parseAlignment();
+        parseVerticalAlignment();
     };
 
     // External function to set halign
     this.setHalign = function(newHalign) {
         halign = newHalign;
-        parseAlignment();
+        parseHorizontalAlignment();
     };
 
     // External function to set fit
