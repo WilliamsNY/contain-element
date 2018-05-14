@@ -1,8 +1,8 @@
 function ContainElement(options) {
     var scaleFactor = 1,
         element = options.element || document.getElementById(options.id),
-        elementWidth = options.width || element.offsetWidth,
-        elementHeight = options.height || element.offsetHeight,
+        elementWidth = Number(options.width) || element.offsetWidth,
+        elementHeight = Number(options.height) || element.offsetHeight,
         valign = options.valign || "center",
         halign = options.halign || "center",
         fit = options.fit || "cover",
@@ -22,40 +22,42 @@ function ContainElement(options) {
         element.parentElement.style.position = "relative";
     }
 
-    // Convert halign to decimal percent
-    switch (halign) {
-        case "left":
-            halign = 0;
-            break;
+    function parseAlignment() {
+        // Convert halign to decimal percent
+        switch (halign) {
+            case "left":
+                halign = 0;
+                break;
 
-        case "center":
-            halign = 0.5;
-            break;
+            case "center":
+                halign = 0.5;
+                break;
 
-        case "right":
-            halign = 1;
-            break;
+            case "right":
+                halign = 1;
+                break;
 
-        default:
-            halign = Number(halign) / 100;
-    }
+            default:
+                halign = Number(halign) / 100;
+        }
 
-    // Convert valign to decimal percent
-    switch (valign) {
-        case "top":
-            valign = 0;
-            break;
+        // Convert valign to decimal percent
+        switch (valign) {
+            case "top":
+                valign = 0;
+                break;
 
-        case "center":
-            valign = 0.5;
-            break;
+            case "center":
+                valign = 0.5;
+                break;
 
-        case "bottom":
-            valign = 1;
-            break;
+            case "bottom":
+                valign = 1;
+                break;
 
-        default:
-            valign = Number(valign) / 100;
+            default:
+                valign = Number(valign) / 100;
+        }
     }
 
     function updateContain() {
@@ -114,6 +116,9 @@ function ContainElement(options) {
         }
     }
 
+    // Parse the valign and halign options
+    parseAlignment();
+
     // Run the function to scale and anchor the element
     updateContain();
 
@@ -121,41 +126,69 @@ function ContainElement(options) {
     this.update = updateContain;
 
     // External function to set elementWidth
-    this.setWidth = function(newWidth) { elementWidth = newWidth; };
+    this.setWidth = function(newWidth) {
+        elementWidth = Number(newWidth);
+    };
 
     // External function to set elementHeight
-    this.setHeight = function(newHeight) { elementHeight = newHeight; };
+    this.setHeight = function(newHeight) {
+        elementHeight = Number(newHeight);
+    };
 
     // External function to set valign
-    this.setValign = function(newValign) { valign = newValign; };
+    this.setValign = function(newValign) {
+        valign = newValign;
+        parseAlignment();
+    };
 
     // External function to set halign
-    this.setHalign = function(newHalign) { halign = newHalign; };
+    this.setHalign = function(newHalign) {
+        halign = newHalign;
+        parseAlignment();
+    };
 
     // External function to set fit
-    this.setFit = function(newFit) { fit = newFit; };
+    this.setFit = function(newFit) {
+        fit = newFit;
+    };
 
     // External function to return the elementWidth
-    this.getWidth = function() { return elementWidth; };
+    this.getWidth = function() {
+        return Number(elementWidth);
+    };
 
     // External function to return the elementHeight
-    this.getHeight = function() { return elementHeight; };
+    this.getHeight = function() {
+        return Number(elementHeight);
+    };
 
     // External function to return the current width
-    this.getCurrentWidth = function() { return scaleFactor * elementWidth; };
+    this.getCurrentWidth = function() {
+        return scaleFactor * elementWidth;
+    };
 
     // External function to return the current height
-    this.getCurrentHeight = function() { return scaleFactor * elementHeight; };
+    this.getCurrentHeight = function() {
+        return scaleFactor * elementHeight;
+    };
 
     // External function to return the current valign
-    this.getValign = function() { return valign; };
+    this.getValign = function() {
+        return valign;
+    };
 
     // External function to return the current halign
-    this.getHalign = function() { return halign; };
+    this.getHalign = function() {
+        return halign;
+    };
 
     // External function to return the current fit
-    this.getFit = function() { return fit; };
+    this.getFit = function() {
+        return fit;
+    };
 
     // External function to return the current scale factor
-    this.getScale = function() { return scaleFactor; };
+    this.getScale = function() {
+        return scaleFactor;
+    };
 }
